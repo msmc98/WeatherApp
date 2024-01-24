@@ -1,0 +1,92 @@
+export const weatherType = {
+    Thunderstorm: {
+        icon: 'cloud-lightning',
+        message: 'Its stormy out there!',
+        backgroundColor: '#00050',
+        lightColor: false,
+    },
+    Drizzle: {
+        icon: 'cloud-rain',
+        message: 'Its drizzling out there!',
+        backgroundColor: '#36454f50',
+        lightColor: false,
+    },
+    Rain: {
+        icon: 'umbrella',
+        message: 'Its raining out there!',
+        backgroundColor: '#48799f50',
+        lightColor: false,
+    },
+    Snow: {
+        icon: 'snowflake',
+        message: 'Its snowing out there!',
+        backgroundColor: '#87ceeb50',
+        lightColor: true,
+    },
+    Mist: {
+        icon: 'align-justify',
+        message: 'Its misty out there!',
+        backgroundColor: '#3e3e3750',
+        lightColor: false,
+    },
+    Smoke: {
+        icon: 'cloud-drizzle',
+        message: 'Its smokey out there!',
+        backgroundColor: '#80808050',
+        lightColor: true,
+    },
+    Haze: {
+        icon: 'wind',
+        message: 'Its hazy out there!',
+        backgroundColor: '#58586e50',
+        lightColor: false,
+    },
+    Dust: {
+        icon: 'cloud-drizzle',
+        message: 'Its dusty out there!',
+        backgroundColor: '#44450',
+        lightColor: false,
+    },
+    Fog: {
+        icon: 'cloud-drizzle',
+        message: 'Its foggy out there!',
+        backgroundColor: '#33333350',
+        lightColor: false,
+    },
+    Sand: {
+        icon: 'cloud-drizzle',
+        message: 'Its sandy out there!',
+        backgroundColor: '#71351250',
+        lightColor: false,
+    },
+    Ash: {
+        icon: 'cloud-drizzle',
+        message: 'Its ashy out there!',
+        backgroundColor: '#80808050',
+        lightColor: true,
+    },
+    Squall: {
+        icon: 'cloud-drizzle',
+        message: 'Its squally out there!',
+        backgroundColor: '#80808050',
+        lightColor: true,
+    },
+    Tornado: {
+        icon: 'cloud-drizzle',
+        message: 'Its tornado out there!',
+        backgroundColor: '#f4f4f450',
+        lightColor: true,
+    },
+    Clear: {
+        icon: 'sun',
+        message: 'Its sunny out there!',
+        backgroundColor: '#ffff0050',
+        lightColor: true,
+    },
+    Clouds: {
+        icon: 'cloud',
+        message: 'Its cloudy out there!',
+        backgroundColor: '#36363650',
+        lightColor: false,
+    },
+}
