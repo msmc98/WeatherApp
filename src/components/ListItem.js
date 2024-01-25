@@ -7,9 +7,9 @@ import moment from "moment";
 const ListItem = (props) => {
     const { dt_text, min, max, condition, dateTextWrapper } = props
     const { item, date, temp } = styles;
-    const color = weatherType[condition].backgroundColor
-    const lightColor = weatherType[condition].lightColor
-    const icon = weatherType[condition].icon
+    const color = weatherType[condition]?.backgroundColor
+    const lightColor = weatherType[condition]?.lightColor
+    const icon = weatherType[condition]?.icon
 
     const handleLightColor = () => {
         return lightColor ? 'black' : 'white'

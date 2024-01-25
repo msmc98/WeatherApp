@@ -1,21 +1,23 @@
 import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, StatusBar } from "react-native";
 import IconText from "../components/IconText";
+import moment from "moment";
 
-const City = () => {
+const City = ({ weatherData }) => {
     const { container, wrapper, shadowText, cityName, cityText, countryName, populationWrapper, populationText, riseSetWrapper, riseSetText, rowLayout, imageLayout } = styles;
+    const { name, country, population, sunrise, sunset } = weatherData;
     return (
         <SafeAreaView style={ container }>
             <ImageBackground source={ require('../../assets/bg-city.jpg') } style={ imageLayout } >
                 <View style={ wrapper } >
-                    <Text style={ [cityName, cityText, shadowText] }>Cordoba</Text>
-                    <Text style={ [countryName, cityText, shadowText] }>Spain</Text>
+                    <Text style={ [cityName, cityText, shadowText] }>{name}</Text>
+                    <Text style={ [countryName, cityText, shadowText] }>{country}</Text>
                     <View style={ [populationWrapper, rowLayout] }>
-                        <IconText iconName={ 'users' } iconColor={ 'red' } bodyText={ '8000' } bodyTextStyles={[shadowText, populationText ]} />
+                        <IconText iconName={ 'users' } iconColor={ 'red' } bodyText={ `Population: ${population}` } bodyTextStyles={[shadowText, populationText ]} />
                     </View>
                     <View style={ [riseSetWrapper, rowLayout] }>
-                        <IconText iconName={ 'sunrise' } iconColor={ 'white' } bodyText={ '06:53:11am' } bodyTextStyles={[shadowText, riseSetText ]} />
-                        <IconText iconName={ 'sunset' } iconColor={ 'white' } bodyText={ '19:32:43pm' } bodyTextStyles={[shadowText, riseSetText ]} />
+                        <IconText iconName={ 'sunrise' } iconColor={ 'white' } bodyText={ moment(sunrise).format('HH:mm:ss') } bodyTextStyles={[shadowText, riseSetText ]} />
+                        <IconText iconName={ 'sunset' } iconColor={ 'white' } bodyText={ moment(sunset).format('HH:mm:ss') } bodyTextStyles={[shadowText, riseSetText ]} />
                     </View>
                 </View>
             </ImageBackground>

@@ -7,16 +7,16 @@ import { weatherType } from '../utilities/weatherType';
 const CurrentWeather = ({ weatherData }) => {
   const { wrapper, container, tempStyle, feels, highLow, highLowWrapper, bodyWrapper, description, message, mainTempWrapper, withinBodyWrapper } = styles;
   const { main: { temp, feels_like, temp_max, temp_min }, weather } = weatherData;
-  const weatherCondition = weather[0].main;
+  const weatherCondition = weather[0]?.main;
   
   return (
-    <SafeAreaView style={ [wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor }] }>
+    <SafeAreaView style={ [wrapper, { backgroundColor: weatherType[weatherCondition]?.backgroundColor }] }>
       <View style={ container }>
         <View style= { mainTempWrapper }>
           <Feather
-            name={ weatherType[weatherCondition].icon }
+            name={ weatherType[weatherCondition]?.icon }
             size={ 100 }
-            color={ weatherType[weatherCondition].backgrounColor !== "#ffff00" ? 'black' : 'white' } />
+            color={ weatherType[weatherCondition]?.backgrounColor !== "#ffff00" ? 'black' : 'white' } />
           <Text style={ tempStyle }>{ temp } °C</Text>
         </View>
         <Text style={ feels }>Feels like { feels_like } °C</Text>
@@ -29,8 +29,8 @@ const CurrentWeather = ({ weatherData }) => {
       </View>
       <View style= { withinBodyWrapper }>
         <RowText
-          messageOne={ weather[0].description }
-          messageTwo={ weatherType[weather[0].main]['message'] }
+          messageOne={ weather[0]?.description }
+          messageTwo={ weatherType[weather[0]?.main]['message'] }
           containerStyles={ bodyWrapper }
           messageOneStyles={ description }
           messageTwoStyles={ message } />
