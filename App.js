@@ -5,9 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/components/Tabs';
 import { useGetWeather } from './src/hooks/useGetWeather';
 import ErrorItem from './src/components/ErrorItem';
+import { contextCoord } from './src/context/context';
 
 const App = () => {
-  const [loading, error, weather ] = useGetWeather();
+  const [loading, error, weather] = useGetWeather();
+  const [lat, lng, setCoord] = contextCoord(state => [state.lat, state.lng, state.setCoord]);
 
   if (weather && weather.list) {
     return (
@@ -19,17 +21,16 @@ const App = () => {
 
   return (
     <View style={ styles.container }>
-      {loading && !error ? <ActivityIndicator
+      { loading && !error ? <ActivityIndicator
         size={ "large" }
         color={ "black" }
-        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        style={ { flex: 1, justifyContent: 'center', alignItems: 'center' } }
       />
-      : <ErrorItem />
+        : <ErrorItem />
       }
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {

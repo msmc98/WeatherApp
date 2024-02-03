@@ -2,12 +2,14 @@ import React from 'react';
 import CurrentWeather from '../screens/CurrentWeather';
 import UpcomingWeather from '../screens/UpcomingWeather';
 import City from '../screens/City';
+import CityCoordinates from '../components/CityCoordinates';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = ({weather}) => {
+const Tabs = ({ weather }) => {
     return (
         <Tab.Navigator
             screenOptions={ ({
@@ -34,30 +36,60 @@ const Tabs = ({weather}) => {
                     marginTop: -5,
                 },
             }) }>
-
             <Tab.Screen
                 name={ "Current" }
                 // component={ CurrentWeather }
-                options={ {
-                    tabBarIcon: ({ focused }) => <Feather name={ 'droplet' } size={ 25 } color={ focused ? 'white' : 'black' } />
-                } } >
-                {() => <CurrentWeather weatherData={ weather.list[0] } />}
+                options={ ({ navigation }) => ({
+                    tabBarIcon: ({ focused }) => <Feather name={ 'droplet' } size={ 25 } color={ focused ? 'white' : 'black' } />,
+                    headerRight: () => (
+                        <TouchableOpacity
+                            style={ { marginRight: 15 } }
+                            onPress={ () => navigation.navigate("Search") }>
+                            <Feather name={ 'map-pin' } size={ 25 } color={ 'black' } />
+                        </TouchableOpacity>
+                    ),
+                }) }>
+                { () => <CurrentWeather weatherData={ weather.list[0] } /> }
             </Tab.Screen>
             <Tab.Screen
                 name={ "Upcoming" }
                 // component={ UpcomingWeather }
-                options={ {
-                    tabBarIcon: ({ focused }) => <Feather name={ 'clock' } size={ 25 } color={ focused ? 'white' : 'black' } />
-                } }  >
-                {() => <UpcomingWeather weatherData={ weather.list } />}
+                options={ ({ navigation }) => ({
+                    tabBarIcon: ({ focused }) => <Feather name={ 'clock' } size={ 25 } color={ focused ? 'white' : 'black' } />,
+                    headerRight: () => (
+                        <TouchableOpacity
+                            style={ { marginRight: 15 } }
+                            onPress={ () => navigation.navigate("Search") }>
+                            <Feather name={ 'map-pin' } size={ 25 } color={ 'black' } />
+                        </TouchableOpacity>
+                    ),
+                }) }  >
+                { () => <UpcomingWeather weatherData={ weather.list } weatherCity={ weather.city } /> }
             </Tab.Screen>
             <Tab.Screen
                 name={ "City" }
                 // component={ City }
-                options={ {
-                    tabBarIcon: ({ focused }) => <Feather name={ 'home' } size={ 25 } color={ focused ? 'white' : 'black' } />
-                } }  >
-                {() => <City weatherData={ weather.city } />}
+                options={ ({ navigation }) => ({
+                    tabBarIcon: ({ focused }) => <Feather name={ 'home' } size={ 25 } color={ focused ? 'white' : 'black' } />,
+                    headerRight: () => (
+                        <TouchableOpacity
+                            style={ { marginRight: 15 } }
+                            onPress={ () => navigation.navigate("Search") }>
+                            <Feather name={ 'map-pin' } size={ 25 } color={ 'black' } />
+                        </TouchableOpacity>
+                    ),
+                }) }  >
+                { () => <City weatherData={ weather.city } /> }
+            </Tab.Screen>
+            <Tab.Screen
+                name={ "Search" }
+                // no quiero mostrat este componente en el tab, solo quiero que se muestre cuando se presione el icono de la derecha en el header
+                // component={ SearchPlace }
+                options={ () => ({
+                    tabBarVisible: false,
+                    tabBarButton: () => null,
+                }) } >
+                { () => <CityCoordinates weatherData={ weather.city } /> }
             </Tab.Screen>
 
         </Tab.Navigator>

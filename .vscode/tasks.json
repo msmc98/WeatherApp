@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // {
+    //   "type": "npm",
+    //   "script": "start",
+    //   "runOptions": {
+    //     "runOn": "folderOpen"
+    //   },
+    //  "problemMatcher": []
+    // },
+    {
+      "type": "shell",
+      "label": "expo start",
+      "command": "npx expo start",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
